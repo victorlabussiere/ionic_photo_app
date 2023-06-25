@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <!-- main header -->
+  <ion-toolbar>
+    <ion-title> My Photo Gallery </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <!-- header that appears during scroll -->
+  <ion-header>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">My Photo Gallery</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </ion-header>
+  <!-- main content -->
+  <!-- Display de fotos -->
+  <ion-grid class="gridImages">
+    <ion-row>
+      <ion-col
+        size="6"
+        *ngFor="let photo of photoService.photos; index as position"
+      >
+        <ion-img
+          [src]="photo.webviewPath"
+          (click)="showActionSheet(photo, position)"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- Ion Flaot Action Button -->
+  <ion-fab
+    vertical="bottom"
+    horizontal="center"
+    slot="fixed"
+  >
+    <ion-fab-button (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
